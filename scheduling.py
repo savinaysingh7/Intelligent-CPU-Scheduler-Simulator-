@@ -41,3 +41,15 @@ def sjf(processes):
 processes = [{'id': 1, 'arrival': 0, 'burst': 6}, {'id': 2, 'arrival': 2, 'burst': 4}, {'id': 3, 'arrival': 4, 'burst': 2}]
 sjf(processes)
 
+def priority_scheduling(processes):
+    processes.sort(key=lambda x: (x['priority'], x['arrival']))  # Sort by Priority & Arrival Time
+    time = 0
+    for p in processes:
+        if time < p['arrival']:
+            time = p['arrival']
+        time += p['burst']
+        print(f"Process {p['id']} with priority {p['priority']} executed at time {time}")
+
+processes = [{'id': 1, 'arrival': 0, 'burst': 5, 'priority': 2},
+             {'id': 2, 'arrival': 2, 'burst': 3, 'priority': 1}]
+priority_scheduling(processes)
