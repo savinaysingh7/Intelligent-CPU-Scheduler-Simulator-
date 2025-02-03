@@ -28,6 +28,7 @@ def round_robin(processes, quantum):
 processes = [{'id': 1, 'burst': 5}, {'id': 2, 'burst': 8}]
 round_robin(processes, quantum=3)
 
+
 def sjf(processes):
     processes.sort(key=lambda x: (x['arrival'], x['burst']))  # Sort by Arrival Time & Burst Time
     time = 0
