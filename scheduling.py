@@ -28,3 +28,15 @@ def round_robin(processes, quantum):
 processes = [{'id': 1, 'burst': 5}, {'id': 2, 'burst': 8}]
 round_robin(processes, quantum=3)
 
+def sjf(processes):
+    processes.sort(key=lambda x: (x['arrival'], x['burst']))  # Sort by Arrival Time & Burst Time
+    time = 0
+    for p in processes:
+        if time < p['arrival']:
+            time = p['arrival']
+        time += p['burst']
+        print(f"Process {p['id']} finished at time {time}")
+
+processes = [{'id': 1, 'arrival': 0, 'burst': 6}, {'id': 2, 'arrival': 2, 'burst': 4}, {'id': 3, 'arrival': 4, 'burst': 2}]
+sjf(processes)
+
